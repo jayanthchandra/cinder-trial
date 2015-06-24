@@ -1,0 +1,6 @@
+a=subprocess.Popen(['ps -ef'],stdout=subprocess.PIPE,shell=True)
+f1 =subprocess.Popen(["grep","python"],stdin=a.stdout,stdout=subprocess.PIPE)
+f2 =subprocess.Popen(["grep","cinder"],stdin=f1.stdout,stdout=subprocess.PIPE)
+out=f2.communicate()[0]
+c=out.split()
+new=[item for item in c if not item.isdigit()]
